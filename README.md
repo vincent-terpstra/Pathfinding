@@ -6,8 +6,8 @@
 <embed 
   id="Hex Map Pathfinder"
   type="application/x-java-applet;version=1.6"
-  width="999" height="999" 
+  width="999" height="300" 
   archive="Pathfinder.jar"
-  code="Bar.class"
+  code="SpaceHexDesktop.class"
   pluginspage="http://java.com/download/"
 myParam="YourParams" />
