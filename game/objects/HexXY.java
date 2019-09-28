@@ -1,6 +1,6 @@
 package com.spacehex.game.objects;
 
-public class HexXY {
+public class HexXY implements Cloneable {
 	public HexXY(){
 		this(0, 0);
 	}
@@ -54,7 +54,7 @@ public class HexXY {
 	public int dist(int x, int y){
 		int dx = this.x - x;
 		int dy = this.y - y;
-		return Math.abs(dx) + Math.abs(dy) + Math.abs(dx + dy);
+		return (Math.abs(dx) + Math.abs(dy) + Math.abs(dx + dy)) / 2;
 	}
 	
 	//Hex coordinates on the map
@@ -74,5 +74,13 @@ public class HexXY {
 		if(dx == 0){ 		return dy == -1 ? 5 : 2; } 
 		else if(dy == 0){	return dx == -1 ? 0 : 3; }
 		return dx == -1 ? 1 : 4;
+	}
+	
+	public final void print(){
+		System.out.println("[" + x + " : " + y + "]");
+	}
+	
+	public HexXY clone(){
+		return new HexXY(x, y);
 	}
 }

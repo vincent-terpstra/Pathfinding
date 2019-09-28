@@ -18,7 +18,7 @@ public class HWorldControl {
 		final float height = HexBatch.Height(), width = HexBatch.Width();
 		int minY = -(int)mapY;
 		int maxY = (int)(-mapY + height);
-		
+		PathAlgorithm.draw(batch);
 		world.draw(batch, !dragged, minY - 1, maxY + 1, 
 			(int)calcX(0,	 minY) - 2, 
 			(int)calcX(0,	 maxY) - 2,

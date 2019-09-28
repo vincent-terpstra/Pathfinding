@@ -80,25 +80,30 @@ public class ShaderLibrary {
 		+	"uniform mat3 u_mat;"	
 			
 		+	"varying vec2 v_uv;"
-		+	"varying vec4 v_color;"	
+		+	"varying vec3 v_color;"	
 		
 		+	"void main(){"
 		+	"	v_uv = a_uv;"
-		+	"	v_color = a_color;"
+		+	"	v_color = a_color.rgb;"
 		+	"   vec3 pos = u_mat * vec3(a_xyz.xy, 1.0);"
 		+	"	gl_Position = vec4(pos.xy, a_xyz.z, 1.0);"
 		+	"}"
 		,
 	frag = 
 			"varying vec2 v_uv;"
-		+	"varying vec4 v_color;"
+		+	"varying vec3 v_color;"
 					
 		+	"uniform sampler2D u_texture;"
 		
 		+	"void main(){"
-		+	"   vec4 color = texture2D(u_texture, v_uv.xy );"
-		+	"   if(color.a < .1) discard;"
-		+	"	gl_FragColor = vec4(v_color.rgb, color.a);"
+		/**
+		+	"	gl_FragColor = texture2D(u_texture, v_uv.xy);"
+		/**/
+		+   "   vec4 color = texture2D(u_texture, v_uv.xy);"
+		+	"   if(color.a < .1)"
+		+ 	"		discard;"
+		+	"	gl_FragColor = vec4(v_color, 1.0);"
+		/**/
 		+	"}"
 		;
 }

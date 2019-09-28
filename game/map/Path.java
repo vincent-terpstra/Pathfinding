@@ -11,9 +11,13 @@ public class Path {
 		this.nodes = null;
 	}
 	
-	public Path(int[] nodes, int turns){
+	public Path(int dir){
+		this( new int[]{dir, 1});
+	}
+	
+	public Path(int[] nodes){
 		this.nodes = nodes;
-		this.turns = turns;
+		this.turns = nodes.length;
 	}
 	
 	public int nextDir(){
@@ -30,7 +34,6 @@ public class Path {
 	
 	
 	public void draw( HexBatch batch, HexXY ship){
-		
 		if(nodes != null){
 			HexXY start = new HexXY().set(ship);
 			for(int i = turns; i > 0;){

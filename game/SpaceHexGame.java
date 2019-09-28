@@ -31,7 +31,7 @@ public class SpaceHexGame extends ApplicationAdapter implements InputProcessor {
 		time = next;
 		while(sum > 10){
 			sum -= 10;
-			if(!updating)
+			if(updating)
 				map.update();
 		}
 		renderScreen();
@@ -40,7 +40,6 @@ public class SpaceHexGame extends ApplicationAdapter implements InputProcessor {
 	
 	private void renderScreen() {
 		batch.begin();
-		batch.setShift(0, 0);
 		control.draw(batch);
 		batch.end();
 	}

@@ -1,9 +1,9 @@
 package com.spacehex.game.objects;
 
 import com.spacehex.game.draw.HexBatch;
-import com.spacehex.game.map.HArray;
 import com.spacehex.game.map.HWorld;
 import com.spacehex.game.map.Path;
+import com.spacehex.game.map.PathAlgorithm;
 
 public class Ship extends MapObject implements HWorld.Update {
 	public Ship(int x, int y, HWorld world) {
@@ -30,7 +30,7 @@ public class Ship extends MapObject implements HWorld.Update {
 	}
 	
 	public final void moveTo(HexXY target, HWorld world){
-		path = new HArray().calculatePath(world, this, target);
+		path = PathAlgorithm.calculatePath(world, this, target);
 		//At rest && the path has a direction to travel
 		if(dir == -1 && (dir = path.nextDir()) != -1)
 			world.move(this,  dir);
